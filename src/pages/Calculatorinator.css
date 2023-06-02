@@ -1,0 +1,141 @@
+.rightAlign {
+  text-align: right;
+}
+
+.leftAlign {
+  text-align: left;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.fadeOut {
+  animation: fadeout 0.5s forwards;
+}
+
+.fadeIn {
+  animation: fadein 0.5s forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.75rem;
+  }
+}
+.calculatorinator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  gap: 1rem;
+  height: 60%;
+  padding: 2rem;
+}
+.calculatorinator .answerArea {
+  border: 4px solid #4cb050;
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 41.6px;
+  display: flex;
+  align-items: center;
+}
+.calculatorinator .buttons {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.calculatorinator .buttons .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  height: 100%;
+}
+.calculatorinator .buttons .left .clear {
+  width: 100%;
+}
+.calculatorinator .buttons .left .clear .button {
+  width: 100%;
+}
+.calculatorinator .buttons .left .digits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+}
+.calculatorinator .buttons .left .zeroAndDot {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+.calculatorinator .buttons .left .zeroAndDot .button {
+  width: 45%;
+}
+.calculatorinator .buttons .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+}
+.calculatorinator .buttons .right .back {
+  width: 100%;
+}
+.calculatorinator .buttons .right .back .button {
+  width: 100%;
+}
+.calculatorinator .buttons .right .operators {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem;
+  height: calc(50% + 0.25rem);
+}
+.calculatorinator .buttons .right .operators .button {
+  height: 100%;
+}
+.calculatorinator .buttons .right .solve {
+  width: 100%;
+}
+.calculatorinator .buttons .right .solve .button {
+  width: 100%;
+}
+
+/*# sourceMappingURL=Calculatorinator.css.map */
