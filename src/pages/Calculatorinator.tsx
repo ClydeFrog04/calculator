@@ -33,6 +33,16 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
 
     const solveProblem = (equation: string) => {
         console.log(TAG, equation);
+        //"((?<=[/*\\-+])|(?=[/*\\-+]))";
+        // const pattern = /((?<=[/*\-+])|(?=[/*\-+]))/;
+        //https://stackoverflow.com/questions/43801602/split-an-arithmetic-expression-with-a-regex
+        const pattern = /([*/]|\b\s*-|\b\s*\+)/g;
+        const equationParts = equation.split(pattern);
+        console.log(TAG, "equation bits:", equationParts);
+
+        if(equationParts.length <= 2){
+            return;//prevents a crash if the equation is something like 5+, this can't be solved yet obvs
+        }
     }
 
     const digitBtnHandler = (e: React.MouseEvent) => {
