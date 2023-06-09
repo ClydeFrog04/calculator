@@ -1,0 +1,120 @@
+.rightAlign {
+  text-align: right;
+}
+
+.leftAlign {
+  text-align: left;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.fadeOut {
+  animation: fadeout 0.5s forwards;
+}
+
+.fadeIn {
+  animation: fadein 0.5s forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.75rem;
+  }
+}
+:root {
+  /* HTML5 display-role reset for older browsers */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+:root * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+:root html, :root body, :root div, :root span, :root applet, :root object, :root iframe,
+:root h1, :root h2, :root h3, :root h4, :root h5, :root h6, :root p, :root blockquote, :root pre,
+:root a, :root abbr, :root acronym, :root address, :root big, :root cite, :root code,
+:root del, :root dfn, :root em, :root img, :root ins, :root kbd, :root q, :root s, :root samp,
+:root small, :root strike, :root strong, :root sub, :root sup, :root tt, :root var,
+:root b, :root u, :root i, :root center,
+:root dl, :root dt, :root dd, :root ol, :root ul, :root li,
+:root fieldset, :root form, :root label, :root legend,
+:root table, :root caption, :root tbody, :root tfoot, :root thead, :root tr, :root th, :root td,
+:root article, :root aside, :root canvas, :root details, :root embed,
+:root figure, :root figcaption, :root footer, :root header, :root hgroup,
+:root menu, :root nav, :root output, :root ruby, :root section, :root summary,
+:root time, :root mark, :root audio, :root video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+:root article, :root aside, :root details, :root figcaption, :root figure,
+:root footer, :root header, :root hgroup, :root menu, :root nav, :root section {
+  display: block;
+}
+:root body {
+  line-height: 1;
+}
+:root ol, :root ul {
+  list-style: none;
+}
+:root blockquote, :root q {
+  quotes: none;
+}
+:root blockquote:before, :root blockquote:after,
+:root q:before, :root q:after {
+  content: "";
+  content: none;
+}
+:root table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/*# sourceMappingURL=index.css.map */

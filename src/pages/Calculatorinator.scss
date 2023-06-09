@@ -6,7 +6,87 @@ $componentGap: 1rem;
 $buttonGap: .25rem;
 
 .calculatorinator{
-    @include flexCenterColumn();
+    @include fitContainer();
+    border: 1px solid rebeccapurple;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1rem;
+    //grid-template-areas:
+    //        "answerArea . . . ."
+    //        "clear . . back ."
+    //        "seven eight nine multiply divide"
+    //        "four five six . ."
+    //        "one two three add subtract"
+    //        "zero . dot solve .";
+
+    #answerArea{
+        grid-column: 1 / 6;
+    }
+    #clear{
+        grid-column: 1 / 4;
+    }
+    #back{
+        grid-column: 4 / 6;
+    }
+
+    #multiply{
+        height: 75%;
+        grid-row: 3 / 5;
+        grid-column: 4 / 5;
+    }
+    #divide{
+        height: 75%;
+        grid-row: 3 / 5;
+        grid-column: 5 / 6;
+    }
+
+    #add{
+        height: 150%;
+        margin-top: -100%;
+        grid-column: 4/5;
+        grid-row: 5/5;
+    }
+    #subtract{
+        height: 150%;
+        margin-top: -100%;
+         grid-column: 5/6;
+         grid-row: 5/5;
+     }
+    #zero{
+        grid-column: 1/3;
+    }
+    #dot{
+        grid-column: 3/5;
+    }
+
+    /*
+    grid-template-areas:
+            "answerArea answerArea answerArea answerArea answerArea"
+            "clear clear clear back back"
+            "seven eight nine multiply divide"
+            "four five six . ."
+            "one two three add subtract"
+            "zero zero dot solve solve";
+     */
+
+
+    .answerArea{
+        border: 4px solid $themeGreen;
+        border-radius: $mainCornerSize;
+        padding: .5rem;
+        box-sizing: border-box;
+        //width: 100%;
+        //min-height: 41.6px;//one line with padding
+        display: flex;
+        align-items: center;
+        //justify-content: center;
+    }
+}
+
+
+/*
+@include flexCenterColumn();
     //@include fitContainer();
     border: 1px solid #d3d3d3;
     border-radius: $mainCornerSize;
@@ -99,4 +179,4 @@ $buttonGap: .25rem;
             }
         }
     }
-}
+ */

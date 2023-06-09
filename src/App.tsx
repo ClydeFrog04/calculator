@@ -1,6 +1,6 @@
 import "./App.scss";
-import Button from "./components/Button/Button.tsx";
 import Calculatorinator from "./pages/Calculatorinator.tsx";
+import {getRPN} from "./utils/ShuntingYard/ShuntingYard.ts";
 
 function App() {
 

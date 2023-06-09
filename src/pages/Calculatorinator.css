@@ -48,94 +48,163 @@
   }
 }
 .calculatorinator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border: 1px solid #d3d3d3;
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rebeccapurple;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   gap: 1rem;
-  height: 60%;
-  padding: 2rem;
+  /*
+  grid-template-areas:
+          "answerArea answerArea answerArea answerArea answerArea"
+          "clear clear clear back back"
+          "seven eight nine multiply divide"
+          "four five six . ."
+          "one two three add subtract"
+          "zero zero dot solve solve";
+   */
+}
+.calculatorinator #answerArea {
+  grid-column: 1/6;
+}
+.calculatorinator #clear {
+  grid-column: 1/4;
+}
+.calculatorinator #back {
+  grid-column: 4/6;
+}
+.calculatorinator #multiply {
+  height: 75%;
+  grid-row: 3/5;
+  grid-column: 4/5;
+}
+.calculatorinator #divide {
+  height: 75%;
+  grid-row: 3/5;
+  grid-column: 5/6;
+}
+.calculatorinator #add {
+  height: 150%;
+  margin-top: -100%;
+  grid-column: 4/5;
+  grid-row: 5/5;
+}
+.calculatorinator #subtract {
+  height: 150%;
+  margin-top: -100%;
+  grid-column: 5/6;
+  grid-row: 5/5;
+}
+.calculatorinator #zero {
+  grid-column: 1/3;
+}
+.calculatorinator #dot {
+  grid-column: 3/5;
 }
 .calculatorinator .answerArea {
   border: 4px solid #4cb050;
   border-radius: 4px;
   padding: 0.5rem;
   box-sizing: border-box;
-  width: 100%;
-  min-height: 41.6px;
   display: flex;
   align-items: center;
 }
-.calculatorinator .buttons {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-  height: 100%;
-}
-.calculatorinator .buttons .left {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: space-between;
-  height: 100%;
-}
-.calculatorinator .buttons .left .clear {
-  width: 100%;
-}
-.calculatorinator .buttons .left .clear .button {
-  width: 100%;
-}
-.calculatorinator .buttons .left .digits {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.25rem;
-}
-.calculatorinator .buttons .left .zeroAndDot {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-content: space-between;
-}
-.calculatorinator .buttons .left .zeroAndDot .button {
-  width: 45%;
-}
-.calculatorinator .buttons .right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  justify-content: space-between;
-}
-.calculatorinator .buttons .right .back {
-  width: 100%;
-}
-.calculatorinator .buttons .right .back .button {
-  width: 100%;
-}
-.calculatorinator .buttons .right .operators {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.25rem;
-  height: calc(50% + 0.25rem);
-}
-.calculatorinator .buttons .right .operators .button {
-  height: 100%;
-}
-.calculatorinator .buttons .right .solve {
-  width: 100%;
-}
-.calculatorinator .buttons .right .solve .button {
-  width: 100%;
-}
+
+/*
+@include flexCenterColumn();
+    //@include fitContainer();
+    border: 1px solid #d3d3d3;
+    border-radius: $mainCornerSize;
+    //max-width: 1080px;
+    //max-height: 2400px;
+    gap: $componentGap;
+    height: 60%;
+    padding: 2rem;
+
+    .answerArea{
+        border: 4px solid $themeGreen;
+        border-radius: $mainCornerSize;
+        padding: .5rem;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 41.6px;//one line with padding
+        display: flex;
+        align-items: center;
+        //justify-content: center;
+    }
+    .buttons{
+        //padding: 1rem;
+        box-sizing: border-box;
+        @include flexCenter();
+        gap: $componentGap;
+        width: 100%;
+        height: 100%;
+
+        .left{
+            @include flexCenterColumn();
+            gap: $componentGap;
+            justify-content: space-between;
+            //width: 50%;
+            height: 100%;
+
+            .clear{
+                width: 100%;
+                .button{
+                    width: 100%;
+                }
+            }
+
+            .digits{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: $buttonGap;
+            }
+
+            .zeroAndDot{
+                width: 100%;
+                @include flexCenter();
+                justify-content: space-between;
+                .button{
+                    width: 45%;
+                }
+            }
+        }
+
+        .right{
+            @include flexCenterColumn();
+            height: 100%;
+            width: 100%;
+            //gap: $componentGap;
+            justify-content: space-between;
+
+            .back{
+                width: 100%;
+                .button{
+                    width: 100%;
+                }
+            }
+
+            .operators{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: $buttonGap;
+                height: calc(50% + $buttonGap);
+
+                .button{
+                    height: 100%;
+                }
+            }
+
+            .solve{
+                width: 100%;
+
+                .button{
+                    width: 100%;
+                }
+            }
+        }
+    }
+ */
 
 /*# sourceMappingURL=Calculatorinator.css.map */

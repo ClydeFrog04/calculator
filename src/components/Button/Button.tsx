@@ -7,6 +7,7 @@ import "./Button.css";
 interface ButtonProps{
     text: string;
     onClick?: (e: React.MouseEvent) => void;
+    id?: string;
 }
 
 const Button = (props: PropsWithChildren<ButtonProps>) => {
@@ -22,7 +23,7 @@ const Button = (props: PropsWithChildren<ButtonProps>) => {
     }
 
     return (
-        <button className="button" value={props.text} onClick={handleClick}>
+        <button id={props.id ? props.id : undefined} className="button" value={props.text} onClick={handleClick}>
             {props.text}
         </button>
     );
