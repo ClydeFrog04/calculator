@@ -8,6 +8,7 @@ interface ButtonProps{
     text: string;
     onClick?: (e: React.MouseEvent) => void;
     id?: string;
+    class?: string;
 }
 
 const Button = (props: PropsWithChildren<ButtonProps>) => {
@@ -23,7 +24,7 @@ const Button = (props: PropsWithChildren<ButtonProps>) => {
     }
 
     return (
-        <button id={props.id ? props.id : undefined} className="button" value={props.text} onClick={handleClick}>
+        <button id={props.id ? props.id : undefined} className={`button ${props.class ? props.class : ""}`.trim()} value={props.text} onClick={handleClick}>
             {props.text}
         </button>
     );

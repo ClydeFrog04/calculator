@@ -48,31 +48,30 @@
   }
 }
 .calculatorinator {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100%;
-  border: 1px solid rebeccapurple;
+  width: 100vw;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
   gap: 1rem;
-  /*
-  grid-template-areas:
-          "answerArea answerArea answerArea answerArea answerArea"
-          "clear clear clear back back"
-          "seven eight nine multiply divide"
-          "four five six . ."
-          "one two three add subtract"
-          "zero zero dot solve solve";
-   */
+  padding: 1rem;
 }
 .calculatorinator #answerArea {
   grid-column: 1/6;
 }
 .calculatorinator #clear {
   grid-column: 1/4;
+  height: 50%;
+  align-self: center;
 }
 .calculatorinator #back {
   grid-column: 4/6;
+  height: 50%;
+  align-self: center;
 }
 .calculatorinator #multiply {
   height: 75%;
@@ -98,9 +97,20 @@
 }
 .calculatorinator #zero {
   grid-column: 1/3;
+  height: 50%;
+  align-self: center;
+  margin-bottom: 3rem;
 }
 .calculatorinator #dot {
   grid-column: 3/5;
+  height: 50%;
+  align-self: center;
+  margin-bottom: 3rem;
+}
+.calculatorinator #solve {
+  height: 50%;
+  align-self: center;
+  margin-bottom: 3rem;
 }
 .calculatorinator .answerArea {
   border: 4px solid #4cb050;
@@ -109,6 +119,11 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
+}
+@media (width > 1000px) {
+  .calculatorinator {
+    border: 10px solid green;
+  }
 }
 
 /*
