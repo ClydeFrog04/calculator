@@ -4,6 +4,7 @@
 
 $componentGap: 1rem;
 $buttonGap: .25rem;
+$themeColor: $themeGreen;
 
 @mixin halfAndAlignCenter {
     height: 50%;
@@ -24,6 +25,9 @@ $buttonGap: .25rem;
     gap: 1rem;
     padding: 1rem;
 
+    .button{
+        background-color: $themeColor;
+    }
 
     #answerArea {
         grid-column: 1 / 6;
@@ -67,24 +71,25 @@ $buttonGap: .25rem;
     }
 
     #zero {
-        grid-column: 1/3;
+        grid-column: 1/2;
         @include halfAndAlignCenter();
         margin-bottom: 3rem;
     }
 
     #dot {
-        grid-column: 3/5;
+        grid-column: 2/4;
         @include halfAndAlignCenter();
         margin-bottom: 3rem;
     }
 
     #solve{
+        grid-column: 4/6;
         @include halfAndAlignCenter();
         margin-bottom: 3rem;
     }
 
     .answerArea {
-        border: 4px solid $themeGreen;
+        border: 4px solid $themeColor;
         border-radius: $mainCornerSize;
         padding: .5rem;
         box-sizing: border-box;

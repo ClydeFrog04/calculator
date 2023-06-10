@@ -10,7 +10,7 @@ interface CalculatorinatorProps {
 
 const Calculatorinator = (props: CalculatorinatorProps) => {
     const TAG = "[Calculatorinator.tsx]";
-    const [answer, setAnswer] = useState<string>("4");
+    const [answer, setAnswer] = useState<string>("4^2");
 
     const isLastCharOperator = () => {
         const lastChar = answer.charAt(answer.length - 1);
