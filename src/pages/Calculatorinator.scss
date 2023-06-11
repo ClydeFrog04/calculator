@@ -77,7 +77,13 @@ $themeColor: $themeGreen;
     }
 
     #dot {
-        grid-column: 2/4;
+        grid-column: 2/3;
+        @include halfAndAlignCenter();
+        margin-bottom: 3rem;
+    }
+
+    #exponent{
+        grid-column: 3/4;
         @include halfAndAlignCenter();
         margin-bottom: 3rem;
     }

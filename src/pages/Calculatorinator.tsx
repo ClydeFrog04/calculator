@@ -107,6 +107,7 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
             <Button id={"three"} class={"digit"} onClick={digitBtnHandler} text={"3"}/>
             <Button id={"zero"} class={"digit"} onClick={digitBtnHandler} text={"0"}/>
             <Button id={"dot"} onClick={digitBtnHandler} text={"."}/>
+            <Button id={"exponent"} onClick={digitBtnHandler} text={"^"}/>
             <Button id={"solve"} onClick={digitBtnHandler} text={"solve"}/>
         </div>
     );

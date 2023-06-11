@@ -105,7 +105,13 @@
   margin-bottom: 3rem;
 }
 .calculatorinator #dot {
-  grid-column: 2/4;
+  grid-column: 2/3;
+  height: 50%;
+  align-self: center;
+  margin-bottom: 3rem;
+}
+.calculatorinator #exponent {
+  grid-column: 3/4;
   height: 50%;
   align-self: center;
   margin-bottom: 3rem;
