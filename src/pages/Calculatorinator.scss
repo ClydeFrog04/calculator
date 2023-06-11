@@ -1,0 +1,210 @@
+@use "../shared/Colors" as *;
+@use "../shared/Styles" as *;
+@use "../shared/Variables" as *;
+
+$componentGap: 1rem;
+$buttonGap: .25rem;
+$themeColor: $themeGreen;
+
+@mixin halfAndAlignCenter {
+    height: 50%;
+    align-self: center;
+}
+
+.calculatorinator {
+    //@include fitContainer();
+    position: fixed; //position fixed with height 100% is required for mobile device browsers with address bars that change visibility
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+
+    .button{
+        background-color: $themeColor;
+    }
+
+    #answerArea {
+        grid-column: 1 / 6;
+
+    }
+
+    #clear {
+        grid-column: 1 / 4;
+        @include halfAndAlignCenter();
+    }
+
+    #back {
+        grid-column: 4 / 6;
+        @include halfAndAlignCenter();
+    }
+
+    #multiply {
+        height: 75%;
+        grid-row: 3 / 5;
+        grid-column: 4 / 5;
+    }
+
+    #divide {
+        height: 75%;
+        grid-row: 3 / 5;
+        grid-column: 5 / 6;
+    }
+
+    #add {
+        height: 150%;
+        margin-top: -100%;
+        grid-column: 4/5;
+        grid-row: 5/5;
+    }
+
+    #subtract {
+        height: 150%;
+        margin-top: -100%;
+        grid-column: 5/6;
+        grid-row: 5/5;
+    }
+
+    #zero {
+        grid-column: 1/2;
+        @include halfAndAlignCenter();
+        margin-bottom: 3rem;
+    }
+
+    #dot {
+        grid-column: 2/3;
+        @include halfAndAlignCenter();
+        margin-bottom: 3rem;
+    }
+
+    #exponent{
+        grid-column: 3/4;
+        @include halfAndAlignCenter();
+        margin-bottom: 3rem;
+    }
+
+    #solve{
+        grid-column: 4/6;
+        @include halfAndAlignCenter();
+        margin-bottom: 3rem;
+    }
+
+    .answerArea {
+        border: 4px solid $themeColor;
+        border-radius: $mainCornerSize;
+        padding: .5rem;
+        box-sizing: border-box;
+        //width: 100%;
+        //min-height: 41.6px;//one line with padding
+        display: flex;
+        align-items: center;
+        //justify-content: center;
+    }
+
+    //desktop styles
+    @media (width > 1000px) {
+        border: 10px solid green;
+    }
+}
+
+
+/*
+@include flexCenterColumn();
+    //@include fitContainer();
+    border: 1px solid #d3d3d3;
+    border-radius: $mainCornerSize;
+    //max-width: 1080px;
+    //max-height: 2400px;
+    gap: $componentGap;
+    height: 60%;
+    padding: 2rem;
+
+    .answerArea{
+        border: 4px solid $themeGreen;
+        border-radius: $mainCornerSize;
+        padding: .5rem;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 41.6px;//one line with padding
+        display: flex;
+        align-items: center;
+        //justify-content: center;
+    }
+    .buttons{
+        //padding: 1rem;
+        box-sizing: border-box;
+        @include flexCenter();
+        gap: $componentGap;
+        width: 100%;
+        height: 100%;
+
+        .left{
+            @include flexCenterColumn();
+            gap: $componentGap;
+            justify-content: space-between;
+            //width: 50%;
+            height: 100%;
+
+            .clear{
+                width: 100%;
+                .button{
+                    width: 100%;
+                }
+            }
+
+            .digits{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: $buttonGap;
+            }
+
+            .zeroAndDot{
+                width: 100%;
+                @include flexCenter();
+                justify-content: space-between;
+                .button{
+                    width: 45%;
+                }
+            }
+        }
+
+        .right{
+            @include flexCenterColumn();
+            height: 100%;
+            width: 100%;
+            //gap: $componentGap;
+            justify-content: space-between;
+
+            .back{
+                width: 100%;
+                .button{
+                    width: 100%;
+                }
+            }
+
+            .operators{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: $buttonGap;
+                height: calc(50% + $buttonGap);
+
+                .button{
+                    height: 100%;
+                }
+            }
+
+            .solve{
+                width: 100%;
+
+                .button{
+                    width: 100%;
+                }
+            }
+        }
+    }
+ */

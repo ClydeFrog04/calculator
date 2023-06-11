@@ -1,8 +1,11 @@
 @use "../../shared/Colors" as *;
 
 .button {
-  background-color: $buttonColor;
-  border: none;
-  padding: 0.9rem 1rem;
-  border-radius: 4px;
+    background-color: $themeGreen;
+    border: none;
+    //padding: 0.9rem 1rem;//i think this was needed for when buttons were gonna be square and standalone, not as part of a grid display.
+    border-radius: 4px;
+    &:hover {
+        cursor: pointer;
+    }
 }

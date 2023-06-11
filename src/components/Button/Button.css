@@ -1,8 +1,10 @@
 .button {
   background-color: #4cb050;
   border: none;
-  padding: 0.9rem 1rem;
   border-radius: 4px;
+}
+.button:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=Button.css.map */
