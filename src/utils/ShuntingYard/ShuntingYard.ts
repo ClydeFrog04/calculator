@@ -8,22 +8,22 @@
 import {operators} from "./operators.ts";
 import {Tokenizer} from "./Tokenizer";
 
-const assert = (predicate) => {
+const assert = (predicate: boolean) => {
     if (predicate) return;
     throw new Error("Assertion failed due to invalid token");
 };
 
-export const evaluateEquation = (input) => {
+export const evaluateEquation = (input: string) => {
     console.log("evaluating:", input);
     const opSymbols = Object.keys(operators);
-    const stack = [];
-    let output = [];
+    const stack: string[] = [];
+    let output:any[] = [];
 
     const peek = () => {
         return stack.at(-1);
     };
 
-    const addToOutput = (token) => {
+    const addToOutput = (token: any) => {
         output.push(token);
     };
 
@@ -51,7 +51,7 @@ export const evaluateEquation = (input) => {
         }
     };
 
-    const handleToken = (token) => {
+    const handleToken = (token: string) => {
         const o1 = token;
         let o2;
         let topOfStack;
@@ -67,8 +67,11 @@ export const evaluateEquation = (input) => {
                 while (
                     o2 !== undefined &&
                     o2 !== "(" &&
+                        //@ts-ignore
                     (operators[o2].precedence > operators[o1].precedence ||
+                        //@ts-ignore
                         (operators[o2].precedence === operators[o1].precedence &&
+                            //@ts-ignore
                             operators[o1].association === "left"))
                     ) {
                     addToOutput(handlePop());
