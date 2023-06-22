@@ -21,11 +21,16 @@ const TokenSpec = [
     [/^\)/, TokenTypes.PARENTHESIS_RIGHT]
 ];
 
+type Token = {
+    type: string | RegExp,
+    value: any
+}
+
 export class Tokenizer {
     private input: string;
     private cursor: number;
 
-    constructor(input) {
+    constructor(input: string) {
         console.log("input was:", input);
         this.input = input;
         this.cursor = 0;
@@ -35,7 +40,7 @@ export class Tokenizer {
         return this.cursor < this.input.length;
     }
 
-    match(regex, inputSlice) {
+    match(regex: RegExp, inputSlice: string) {
         const matched = regex.exec(inputSlice);
         if (matched === null) {
             return null;
@@ -44,14 +49,14 @@ export class Tokenizer {
         return matched[0];
     }
 
-    getNextToken() {
+    getNextToken(): Token | null {
         if (!this.hasMoreTokens()) {
             return null;
         }
         const inputSlice = this.input.slice(this.cursor);
 
         for (let [regex, type] of TokenSpec) {
-            const tokenValue = this.match(regex, inputSlice);
+            const tokenValue = this.match(regex as RegExp, inputSlice);
 
             if (tokenValue === null) {
                 continue;
