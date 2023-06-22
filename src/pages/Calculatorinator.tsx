@@ -10,9 +10,11 @@ interface CalculatorinatorProps {
 
 const Calculatorinator = (props: CalculatorinatorProps) => {
     const TAG = "[Calculatorinator.tsx]";
-    const [answer, setAnswer] = useState<string>("4^2");
+    const [answer, setAnswer] = useState<string>("");
 
     const isLastCharOperator = () => {
+        if(answer === undefined) return false;
+        console.log(TAG, typeof answer);
         const lastChar = answer.charAt(answer.length - 1);
         return (lastChar === "+" ||
             lastChar === "-" ||
@@ -33,7 +35,7 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
         return lastDot < checkIndex;
     };
 
-    const printAllTokens = (equation) => {
+    const printAllTokens = (equation: string) => {
         const tokenizer = new Tokenizer(equation);
 
         let token;
@@ -45,7 +47,7 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     const solveProblem = (equation: string) => {
         const value = evaluateEquation(equation);
         console.log(TAG, value);
-        setAnswer(value);
+        setAnswer(String(value));
     };
 
     const digitBtnHandler = (e: React.MouseEvent) => {
@@ -64,7 +66,7 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
                 setAnswer(answer.substring(0, answer.length - 1));
                 break;
             case "solve":
-                if (!isLastCharOperator()) {
+                if (!isLastCharOperator() && answer.length > 0) {
                     solveProblem(answer.replaceAll(",", ""));//removing commas for computation only, they WILL be included in the final string :]
                 }
                 break;
