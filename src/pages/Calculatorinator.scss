@@ -107,11 +107,15 @@ $themeColor: $themeRed;
     }
 
     //desktop styles
-    @media (width > 1000px) {
-        border: 1px solid green;
+    @media (width > $breakpointDesktop) {
         width: 50vw;
         height: 50vh;
         position: inherit; //position inherit in order to allow this item to fit in a flex container on desktop :p
+
+        //create a calculator looking border ;P
+        border: 4px solid grey;
+        border-radius: $mainCornerSize;
+        background-color: black;
 
         .button {
             height: auto;
@@ -127,20 +131,28 @@ $themeColor: $themeRed;
             height: 100%;
         }
 
+        #one{
+            grid-column: 1/2;
+        }
+
         #add {
             margin: 0;
             height: 100%;
+            grid-row: 4/5;
         }
         #subtract {
             margin: 0;
             height: 100%;
+            grid-row: 4/5;
         }
 
         #multiply {
             height: 100%;
+            grid-row: 3/4;
         }
         #divide {
             height: 100%;
+            grid-row: 3/4;
         }
 
         #zero {
@@ -161,7 +173,10 @@ $themeColor: $themeRed;
         #solve {
             margin: 0;
             height: 100%;
+            grid-row: 5/6;
         }
+
+
     }
 }
 

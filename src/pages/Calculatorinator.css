@@ -130,12 +130,14 @@
   display: flex;
   align-items: center;
 }
-@media (width > 1000px) {
+@media (width > 1500px) {
   .calculatorinator {
-    border: 1px solid green;
     width: 50vw;
     height: 50vh;
     position: inherit;
+    border: 4px solid grey;
+    border-radius: 4px;
+    background-color: black;
   }
   .calculatorinator .button {
     height: auto;
@@ -148,19 +150,26 @@
   .calculatorinator #back {
     height: 100%;
   }
+  .calculatorinator #one {
+    grid-column: 1/2;
+  }
   .calculatorinator #add {
     margin: 0;
     height: 100%;
+    grid-row: 4/5;
   }
   .calculatorinator #subtract {
     margin: 0;
     height: 100%;
+    grid-row: 4/5;
   }
   .calculatorinator #multiply {
     height: 100%;
+    grid-row: 3/4;
   }
   .calculatorinator #divide {
     height: 100%;
+    grid-row: 3/4;
   }
   .calculatorinator #zero {
     margin: 0;
@@ -177,6 +186,7 @@
   .calculatorinator #solve {
     margin: 0;
     height: 100%;
+    grid-row: 5/6;
   }
 }
 
