@@ -4,7 +4,7 @@
 
 $componentGap: 1rem;
 $buttonGap: .25rem;
-$themeColor: $themePurple;
+$themeColor: $themeRed;
 
 @mixin halfAndAlignCenter {
     height: 50%;
@@ -108,7 +108,11 @@ $themeColor: $themePurple;
 
     //desktop styles
     @media (width > 1000px) {
-        border: 10px solid green;
+        border: 1px solid green;
+        width: 50vw;
+        height: 50vh;
+        position: inherit;//position inherit in order to allow this item to fit in a flex container on desktop :p
+
     }
 }
 
