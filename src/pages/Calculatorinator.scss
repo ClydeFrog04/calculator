@@ -25,7 +25,7 @@ $themeColor: $themeRed;
     gap: 1rem;
     padding: 1rem;
 
-    .button{
+    .button {
         background-color: $themeColor;
     }
 
@@ -82,13 +82,13 @@ $themeColor: $themeRed;
         margin-bottom: 3rem;
     }
 
-    #exponent{
+    #exponent {
         grid-column: 3/4;
         @include halfAndAlignCenter();
         margin-bottom: 3rem;
     }
 
-    #solve{
+    #solve {
         grid-column: 4/6;
         @include halfAndAlignCenter();
         margin-bottom: 3rem;
@@ -111,8 +111,57 @@ $themeColor: $themeRed;
         border: 1px solid green;
         width: 50vw;
         height: 50vh;
-        position: inherit;//position inherit in order to allow this item to fit in a flex container on desktop :p
+        position: inherit; //position inherit in order to allow this item to fit in a flex container on desktop :p
 
+        .button {
+            height: auto;
+            width: auto;
+            padding: 0;
+
+        }
+
+        #clear{
+            height: 100%;
+        }
+        #back{
+            height: 100%;
+        }
+
+        #add {
+            margin: 0;
+            height: 100%;
+        }
+        #subtract {
+            margin: 0;
+            height: 100%;
+        }
+
+        #multiply {
+            height: 100%;
+        }
+        #divide {
+            height: 100%;
+        }
+
+        #zero {
+            margin: 0;
+            height: 100%;
+        }
+
+        #dot {
+            margin: 0;
+            height: 100%;
+        }
+
+        #exponent {
+            margin: 0;
+            height: 100%;
+        }
+
+        #solve {
+            margin: 0;
+            height: 100%;
+        }
     }
 }
 

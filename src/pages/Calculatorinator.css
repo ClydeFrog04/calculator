@@ -137,6 +137,47 @@
     height: 50vh;
     position: inherit;
   }
+  .calculatorinator .button {
+    height: auto;
+    width: auto;
+    padding: 0;
+  }
+  .calculatorinator #clear {
+    height: 100%;
+  }
+  .calculatorinator #back {
+    height: 100%;
+  }
+  .calculatorinator #add {
+    margin: 0;
+    height: 100%;
+  }
+  .calculatorinator #subtract {
+    margin: 0;
+    height: 100%;
+  }
+  .calculatorinator #multiply {
+    height: 100%;
+  }
+  .calculatorinator #divide {
+    height: 100%;
+  }
+  .calculatorinator #zero {
+    margin: 0;
+    height: 100%;
+  }
+  .calculatorinator #dot {
+    margin: 0;
+    height: 100%;
+  }
+  .calculatorinator #exponent {
+    margin: 0;
+    height: 100%;
+  }
+  .calculatorinator #solve {
+    margin: 0;
+    height: 100%;
+  }
 }
 
 /*
