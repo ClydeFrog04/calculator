@@ -11,6 +11,8 @@ interface CalculatorinatorProps {
 const Calculatorinator = (props: CalculatorinatorProps) => {
     const TAG = "[Calculatorinator.tsx]";
     const [answer, setAnswer] = useState<string>("");
+    const [shouldClearText, setShouldClearText] = useState(false);//this will be used to determine if we might want to clear text when a new digit is pressed, this follows modern calculator flow :p
+
 
     const isLastCharOperator = () => {
         if(answer === undefined) return false;
@@ -48,6 +50,7 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
         const value = evaluateEquation(equation);
         console.log(TAG, value);
         setAnswer(String(value));
+        setShouldClearText(true);
     };
 
     const digitBtnHandler = (e: React.MouseEvent) => {
@@ -74,16 +77,27 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
                 if (!isLastCharOperator()) {//minus handled differently than other operators to allow negative input
                     setAnswer(answer + btnText);
                 }
+                if(shouldClearText){
+                    setShouldClearText(false);
+                }
                 break;
             case "+":
             case "*":
             case "/":
+                if(shouldClearText){
+                    setShouldClearText(false);
+                }
                 if (!isLastCharOperator() && answer.length !== 0) {
                     setAnswer(answer + btnText);
                 }
                 break;
             default://default will be all the digits, just add them to the answer
-                setAnswer(answer + btnText);
+                if(shouldClearText){
+                    setShouldClearText(false);
+                    setAnswer(btnText);
+                }else{
+                    setAnswer(answer + btnText);
+                }
         }
     };
 
