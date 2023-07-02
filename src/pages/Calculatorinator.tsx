@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {CSSProperties, useState} from "react";
 import "./Calculatorinator.css";
 import Button from "../components/Button/Button.tsx";
 import {evaluateEquation, getRPN} from "../utils/ShuntingYard/ShuntingYard";
 import {Tokenizer} from "../utils/ShuntingYard/Tokenizer";
+import beeIcon from "../res/TransbeeIconMedium.png"
 
 interface CalculatorinatorProps {
 
@@ -12,6 +13,9 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     const TAG = "[Calculatorinator.tsx]";
     const [answer, setAnswer] = useState<string>("");
     const [shouldClearText, setShouldClearText] = useState(false);//this will be used to determine if we might want to clear text when a new digit is pressed, this follows modern calculator flow :p
+    // const style = {"--width": fillWidth} as CSSProperties;
+    const themeStyle = {"--$themeColor": "$themeBlue", backgroundColor: "$themeColor"} as CSSProperties;
+
 
 
     const isLastCharOperator = () => {
@@ -102,8 +106,38 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     };
 
 
+    const themeCustom = {"--userColor": "#fff"} as CSSProperties;
+    const colorOptions = [
+    "themeGreen",
+    "themePurple",
+    "themeBlue",
+    "themeRed",
+    "themePink",
+    "themeOrange",
+    ];
+    const [themeOption, setThemeOption] = useState(0);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+
+
     return (
-        <div className="calculatorinator">
+        <div className={`calculatorinator ${colorOptions[themeOption]}`.trimEnd()} style={themeCustom}>
+            <div className={`menuContainer`}>
+                <img src={beeIcon} alt="" onClick={ () => {
+                    setMenuOpen(!menuOpen);
+                }}/>
+                <div className={`menu ${menuOpen ? "" : "hide"}`.trimEnd()}>
+                    <span>Don't like the current color? Try one of these!</span>
+                    <select className="colorOptions" onChange={ (event) => {
+                        console.log(TAG, "New color picked was:", event.target.value);
+                        setThemeOption(colorOptions.indexOf(event.target.value));
+                    }}>
+                        {colorOptions.map( (color) => {
+                            return <option key={color}>{color}</option>
+                        })}
+                    </select>
+                </div>
+            </div>
             {/*<textarea className="answerArea" readOnly={true} value={"EEEEEEEE"}/>*/}
             <div id={"answerArea"} className="answerArea">{answer}</div>
             <Button id={"clear"} onClick={digitBtnHandler} text={"clear"}/>

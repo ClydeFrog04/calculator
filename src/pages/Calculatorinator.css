@@ -127,8 +127,45 @@
   border-radius: 4px;
   padding: 0.5rem;
   box-sizing: border-box;
+  height: 50%;
+  align-self: end;
   display: flex;
   align-items: center;
+}
+.calculatorinator .menuContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.calculatorinator .menuContainer img {
+  height: 40px;
+  z-index: 1;
+  position: relative;
+}
+.calculatorinator .menuContainer .menu {
+  transition: 0.5s;
+  transition-timing-function: ease-in-out;
+  padding-top: 80px;
+  width: 100Vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.calculatorinator .menuContainer .menu.hide {
+  transform: translateX(-100vw);
+}
+.calculatorinator .menuContainer .menu .colorOptions {
+  width: 80%;
+  height: 50px;
+  font-size: 1rem;
+  border-radius: 4px;
 }
 @media (width > 1500px) {
   .calculatorinator {
@@ -189,101 +226,47 @@
     grid-row: 5/6;
   }
 }
-
-/*
-@include flexCenterColumn();
-    //@include fitContainer();
-    border: 1px solid #d3d3d3;
-    border-radius: $mainCornerSize;
-    //max-width: 1080px;
-    //max-height: 2400px;
-    gap: $componentGap;
-    height: 60%;
-    padding: 2rem;
-
-    .answerArea{
-        border: 4px solid $themeGreen;
-        border-radius: $mainCornerSize;
-        padding: .5rem;
-        box-sizing: border-box;
-        width: 100%;
-        min-height: 41.6px;//one line with padding
-        display: flex;
-        align-items: center;
-        //justify-content: center;
-    }
-    .buttons{
-        //padding: 1rem;
-        box-sizing: border-box;
-        @include flexCenter();
-        gap: $componentGap;
-        width: 100%;
-        height: 100%;
-
-        .left{
-            @include flexCenterColumn();
-            gap: $componentGap;
-            justify-content: space-between;
-            //width: 50%;
-            height: 100%;
-
-            .clear{
-                width: 100%;
-                .button{
-                    width: 100%;
-                }
-            }
-
-            .digits{
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: $buttonGap;
-            }
-
-            .zeroAndDot{
-                width: 100%;
-                @include flexCenter();
-                justify-content: space-between;
-                .button{
-                    width: 45%;
-                }
-            }
-        }
-
-        .right{
-            @include flexCenterColumn();
-            height: 100%;
-            width: 100%;
-            //gap: $componentGap;
-            justify-content: space-between;
-
-            .back{
-                width: 100%;
-                .button{
-                    width: 100%;
-                }
-            }
-
-            .operators{
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: $buttonGap;
-                height: calc(50% + $buttonGap);
-
-                .button{
-                    height: 100%;
-                }
-            }
-
-            .solve{
-                width: 100%;
-
-                .button{
-                    width: 100%;
-                }
-            }
-        }
-    }
- */
+.calculatorinator.themeBlue .button {
+  background-color: #4c8db0;
+}
+.calculatorinator.themeBlue .answerArea {
+  border-color: #4c8db0;
+}
+.calculatorinator.themeGreen .button {
+  background-color: #4cb050;
+}
+.calculatorinator.themeGreen .answerArea {
+  border-color: #4cb050;
+}
+.calculatorinator.themePurple .button {
+  background-color: #6d4cb0;
+}
+.calculatorinator.themePurple .answerArea {
+  border-color: #6d4cb0;
+}
+.calculatorinator.themeRed .button {
+  background-color: #b04c4f;
+}
+.calculatorinator.themeRed .answerArea {
+  border-color: #b04c4f;
+}
+.calculatorinator.themePink .button {
+  background-color: #b04c9c;
+}
+.calculatorinator.themePink .answerArea {
+  border-color: #b04c9c;
+}
+.calculatorinator.themeOrange .button {
+  background-color: #b06f4c;
+}
+.calculatorinator.themeOrange .answerArea {
+  border-color: #b06f4c;
+}
+.calculatorinator.themeCustom .button {
+  background-color: var(--userColor, #b04c4f);
+}
+.calculatorinator.themeCustom .answerArea {
+  border-color: #4c8db0;
+}
 
 /*# sourceMappingURL=Calculatorinator.css.map */

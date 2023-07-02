@@ -99,11 +99,57 @@ $themeColor: $themeRed;
         border-radius: $mainCornerSize;
         padding: .5rem;
         box-sizing: border-box;
+        height: 50%;
+        align-self: end;
         //width: 100%;
         //min-height: 41.6px;//one line with padding
         display: flex;
         align-items: center;
         //justify-content: center;
+    }
+
+    .menuContainer{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        img{
+            height: 40px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .menu{
+            transition: .5s;
+            transition-timing-function: ease-in-out;
+            padding-top: 80px;
+            &.hide{
+                //display: none;
+                //transform: translateY(-100px);
+                //transform: translate(120px, 50%);
+                transform: translateX(-100vw);
+            }
+            width: 100Vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            //https://stackoverflow.com/questions/27583937/how-can-i-make-a-css-glass-blur-effect-work-for-an-overlay
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            .colorOptions{
+                width: 80%;
+                height: 50px;
+                font-size: 1rem;
+                border-radius: 4px;
+            }
+        }
     }
 
     //desktop styles
@@ -175,104 +221,69 @@ $themeColor: $themeRed;
             height: 100%;
             grid-row: 5/6;
         }
+    }
 
 
+    //theme management
+    &.themeBlue{
+        .button{
+            background-color: $themeBlue;
+        }
+        .answerArea{
+            border-color: $themeBlue;
+        }
+    }
+    &.themeGreen{
+        .button{
+            background-color: $themeGreen;
+        }
+        .answerArea{
+            border-color: $themeGreen;
+        }
+    }
+
+    &.themePurple{
+        .button{
+            background-color: $themePurple;
+        }
+        .answerArea{
+            border-color: $themePurple;
+        }
+    }
+
+    &.themeRed{
+        .button{
+            background-color: $themeRed;
+        }
+        .answerArea{
+            border-color: $themeRed;
+        }
+    }
+
+    &.themePink{
+        .button{
+            background-color: $themePink;
+        }
+        .answerArea{
+            border-color: $themePink;
+        }
+    }
+
+    &.themeOrange{
+        .button{
+            background-color: $themeOrange;
+        }
+        .answerArea{
+            border-color: $themeOrange;
+        }
+    }
+
+    &.themeCustom{
+        .button{
+            background-color: var(--userColor, $themeColor);
+        }
+        .answerArea{
+            border-color: $themeBlue;
+        }
     }
 }
-
-
-/*
-@include flexCenterColumn();
-    //@include fitContainer();
-    border: 1px solid #d3d3d3;
-    border-radius: $mainCornerSize;
-    //max-width: 1080px;
-    //max-height: 2400px;
-    gap: $componentGap;
-    height: 60%;
-    padding: 2rem;
-
-    .answerArea{
-        border: 4px solid $themeGreen;
-        border-radius: $mainCornerSize;
-        padding: .5rem;
-        box-sizing: border-box;
-        width: 100%;
-        min-height: 41.6px;//one line with padding
-        display: flex;
-        align-items: center;
-        //justify-content: center;
-    }
-    .buttons{
-        //padding: 1rem;
-        box-sizing: border-box;
-        @include flexCenter();
-        gap: $componentGap;
-        width: 100%;
-        height: 100%;
-
-        .left{
-            @include flexCenterColumn();
-            gap: $componentGap;
-            justify-content: space-between;
-            //width: 50%;
-            height: 100%;
-
-            .clear{
-                width: 100%;
-                .button{
-                    width: 100%;
-                }
-            }
-
-            .digits{
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: $buttonGap;
-            }
-
-            .zeroAndDot{
-                width: 100%;
-                @include flexCenter();
-                justify-content: space-between;
-                .button{
-                    width: 45%;
-                }
-            }
-        }
-
-        .right{
-            @include flexCenterColumn();
-            height: 100%;
-            width: 100%;
-            //gap: $componentGap;
-            justify-content: space-between;
-
-            .back{
-                width: 100%;
-                .button{
-                    width: 100%;
-                }
-            }
-
-            .operators{
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: $buttonGap;
-                height: calc(50% + $buttonGap);
-
-                .button{
-                    height: 100%;
-                }
-            }
-
-            .solve{
-                width: 100%;
-
-                .button{
-                    width: 100%;
-                }
-            }
-        }
-    }
- */
