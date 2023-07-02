@@ -108,30 +108,42 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
 
     const themeCustom = {"--userColor": "#fff"} as CSSProperties;
     const colorOptions = [
-    "themeGreen",
-    "themePurple",
-    "themeBlue",
-    "themeRed",
-    "themePink",
-    "themeOrange",
+        "Green",
+        "Purple",
+        "Blue",
+        "Red",
+        "Pink",
+        "Orange",
     ];
     const [themeOption, setThemeOption] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
 
 
+    const getThemeName = ():string => {
+        // arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        const colorPicked = colorOptions[themeOption];
+        return `theme${colorPicked.charAt(0).toUpperCase() + colorPicked.slice(1)}`
+    }
+
+    const handleDropDownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        console.log(TAG, "New color picked was:", e.target.value);
+        setThemeOption(colorOptions.indexOf(e.target.value));
+        setMenuOpen(false);
+    }
 
     return (
-        <div className={`calculatorinator ${colorOptions[themeOption]}`.trimEnd()} style={themeCustom}>
+        <div className={`calculatorinator ${getThemeName()}`.trimEnd()} style={themeCustom}>
             <div className={`menuContainer`}>
                 <img src={beeIcon} alt="" onClick={ () => {
                     setMenuOpen(!menuOpen);
                 }}/>
-                <div className={`menu ${menuOpen ? "" : "hide"}`.trimEnd()}>
+                <div className={`menu ${menuOpen ? "" : "hide"}`.trimEnd()} onClick={ () => {
+                    setMenuOpen(false);
+                }}>
                     <span>Don't like the current color? Try one of these!</span>
-                    <select className="colorOptions" onChange={ (event) => {
-                        console.log(TAG, "New color picked was:", event.target.value);
-                        setThemeOption(colorOptions.indexOf(event.target.value));
-                    }}>
+                    <select className="colorOptions"
+                            onChange={handleDropDownChange}
+                            onClick={event => event.stopPropagation()}>
                         {colorOptions.map( (color) => {
                             return <option key={color}>{color}</option>
                         })}
