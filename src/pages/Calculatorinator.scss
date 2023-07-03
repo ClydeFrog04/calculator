@@ -304,10 +304,13 @@ $themeColor: $themeRed;
     &.themeCustom {
         .button {
             background-color: var(--userColor, $themeColor);
+            color: var(--fontColor, white);
         }
 
         .answerArea {
             border-color: var(--userColor, $themeColor);
+            color: var(--fontColor, white);
+
         }
     }
 }

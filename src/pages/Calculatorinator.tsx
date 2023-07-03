@@ -18,9 +18,11 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showCustomColorInput, setShowCustomColorInput] = useState(false);
     const [customColor, setCustomColor] = useState("#fff");
+    const [fontColor, setFontColor] = useState("#fff");
+
 
     const navigate = useNavigate();
-    const themeCustom = {"--userColor": customColor} as CSSProperties;
+    const themeCustom = {"--userColor": customColor, "--fontColor": fontColor} as CSSProperties;
     const colorOptions = [
         "Green",
         "Purple",
@@ -141,8 +143,64 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
 
     const validateHexCode =  (test: string) => {
         // const pattern = /#[0-9a-f]{6}|#[0-9a-f]{3}/gi;
+        if(!test.startsWith("#")){
+            test = "#" + test;
+        }
         const pattern = /^#(?:[0-9a-f]{3}){1,2}$/i;
         return test.match(pattern) !== null;
+    }
+
+    /**
+     * this function will calculate the best font color for a given background color in hex
+     * @param colorCode
+     */
+    const calculateContrastColor = (colorCode: string) => {
+        //https://stackoverflow.com/questions/3942878/how-to-decide-font-color-in-white-or-black-depending-on-background-color
+        /*
+        for each c in r,g,b:
+    c = c / 255.0
+    if c <= 0.04045 then c = c/12.92 else c = ((c+0.055)/1.055) ^ 2.4
+L = 0.2126 * r + 0.7152 * g + 0.0722 * b
+         */
+        if (colorCode.startsWith("#")){
+            colorCode = colorCode.slice(1);
+        }
+        if(colorCode.length === 3){//allows for color codes like #af4 to work :]
+            let r = colorCode.charAt(0);
+            let g = colorCode.charAt(1);
+            let b = colorCode.charAt(2);
+            colorCode = r + r + g + g + b + b;
+        }
+        console.log(TAG, "code to test:", colorCode);
+        const r = colorCode.slice(0, 2);
+        const g = colorCode.slice(2, 4);
+        const b = colorCode.slice(4);
+        console.log(TAG, "rbg found:", r, g, b);
+
+        const rgb = [r,g,b];
+        const rgbLuminance: number[] = [];
+        rgb.forEach( (c) => {
+            let num = parseInt(c, 16);
+            num /= 255.0;
+            if(num <= 0.4045){
+                num = num / 12.92;
+            }else{
+                num =  ((num+0.055)/1.055) ^ 2.4;
+            }
+            rgbLuminance.push(num);
+        });
+
+        let L = 0.2126 * rgbLuminance[0] + 0.7152 * rgbLuminance[1] + 0.0722 * rgbLuminance[2];
+
+        //if L > 0.179 use #000000 else use #ffffff
+        if(L > 0.179){
+            console.log(TAG, "use black");
+            return "#000000";
+        }else{
+            console.log(TAG, "use white");
+            return "#FFFFFF";
+        }
+
     }
 
     return (
@@ -166,10 +224,17 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
                         className={"customColorInput"}
                         onClick={event => event.stopPropagation()}
                         onChange={ (e) => {
-                            const matches = validateHexCode(e.target.value);
-                            console.log(TAG, e.target.value, "matches:", matches);
+                            const colorCode = e.target.value;
+                            const matches = validateHexCode(colorCode);
+                            console.log(TAG, colorCode, "matches:", matches);
                             if(matches){
-                                setCustomColor(e.target.value);
+                                const preferredFontColor = calculateContrastColor(colorCode);
+                                if(!colorCode.startsWith("#")){
+                                    setCustomColor("#" + colorCode);
+                                }else{
+                                    setCustomColor(colorCode);
+                                }
+                                setFontColor(preferredFontColor);
                             }
 
                         }}
