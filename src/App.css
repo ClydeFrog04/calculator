@@ -10,6 +10,12 @@
   font-size: 2rem;
 }
 
+.separator {
+  border-bottom: 2px solid #565656;
+  margin: 0.3rem 0;
+  width: 100%;
+}
+
 .italics {
   font-style: italic;
 }
