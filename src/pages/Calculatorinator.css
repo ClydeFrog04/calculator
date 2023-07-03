@@ -10,6 +10,12 @@
   font-size: 2rem;
 }
 
+.separator {
+  border-bottom: 2px solid #565656;
+  margin: 0.3rem 0;
+  width: 100%;
+}
+
 .italics {
   font-style: italic;
 }
@@ -148,7 +154,7 @@
 .calculatorinator .menuContainer .menu {
   transition: 0.5s;
   transition-timing-function: ease-in-out;
-  padding-top: 80px;
+  padding: 80px 0.5rem;
   width: 100Vw;
   height: 100vh;
   position: absolute;
@@ -168,6 +174,14 @@
   height: 50px;
   font-size: 1rem;
   border-radius: 4px;
+}
+.calculatorinator .menuContainer .menu .bored {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.calculatorinator .menuContainer .menu .bored .button {
+  width: 50%;
 }
 @media (width > 1500px) {
   .calculatorinator {
@@ -268,7 +282,7 @@
   background-color: var(--userColor, #b04c4f);
 }
 .calculatorinator.themeCustom .answerArea {
-  border-color: #4c8db0;
+  border-color: var(--userColor, #b04c4f);
 }
 
 /*# sourceMappingURL=Calculatorinator.css.map */

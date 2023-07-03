@@ -108,13 +108,13 @@ $themeColor: $themeRed;
         //justify-content: center;
     }
 
-    .menuContainer{
+    .menuContainer {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
 
-        img{
+        img {
             height: 40px;
             z-index: 1;
             position: relative;
@@ -122,16 +122,19 @@ $themeColor: $themeRed;
             margin-top: 4px;
         }
 
-        .menu{
+        .menu {
             transition: .5s;
             transition-timing-function: ease-in-out;
-            padding-top: 80px;
-            &.hide{
+            //padding-top: 80px;
+            padding: 80px .5rem;
+
+            &.hide {
                 //display: none;
                 //transform: translateY(-100px);
                 //transform: translate(120px, 50%);
                 transform: translateX(-100vw);
             }
+
             width: 100Vw;
             height: 100vh;
             position: absolute;
@@ -143,13 +146,24 @@ $themeColor: $themeRed;
 
             display: flex;
             flex-direction: column;
+            //align-items: center;
             gap: .5rem;
 
-            .colorOptions{
+            .colorOptions {
                 width: 80%;
                 height: 50px;
                 font-size: 1rem;
                 border-radius: 4px;
+            }
+
+            .bored {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                .button {
+                    width: 50%;
+                }
             }
         }
     }
@@ -172,14 +186,14 @@ $themeColor: $themeRed;
 
         }
 
-        #clear{
+        #clear {
             height: 100%;
         }
-        #back{
+        #back {
             height: 100%;
         }
 
-        #one{
+        #one {
             grid-column: 1/2;
         }
 
@@ -227,65 +241,73 @@ $themeColor: $themeRed;
 
 
     //theme management
-    &.themeBlue{
-        .button{
+    &.themeBlue {
+        .button {
             background-color: $themeBlue;
         }
-        .answerArea{
+
+        .answerArea {
             border-color: $themeBlue;
         }
     }
-    &.themeGreen{
-        .button{
+
+    &.themeGreen {
+        .button {
             background-color: $themeGreen;
         }
-        .answerArea{
+
+        .answerArea {
             border-color: $themeGreen;
         }
     }
 
-    &.themePurple{
-        .button{
+    &.themePurple {
+        .button {
             background-color: $themePurple;
         }
-        .answerArea{
+
+        .answerArea {
             border-color: $themePurple;
         }
     }
 
-    &.themeRed{
-        .button{
+    &.themeRed {
+        .button {
             background-color: $themeRed;
         }
-        .answerArea{
+
+        .answerArea {
             border-color: $themeRed;
         }
     }
 
-    &.themePink{
-        .button{
+    &.themePink {
+        .button {
             background-color: $themePink;
         }
-        .answerArea{
+
+        .answerArea {
             border-color: $themePink;
         }
     }
 
-    &.themeOrange{
-        .button{
+    &.themeOrange {
+        .button {
             background-color: $themeOrange;
         }
-        .answerArea{
+
+        .answerArea {
             border-color: $themeOrange;
         }
     }
 
-    &.themeCustom{
-        .button{
+    &.themeCustom {
+        .button {
             background-color: var(--userColor, $themeColor);
         }
-        .answerArea{
-            border-color: $themeBlue;
+
+        .answerArea {
+            border-color: var(--userColor, $themeColor);
         }
     }
 }

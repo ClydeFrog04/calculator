@@ -1,4 +1,5 @@
 @use "./variables" as *;
+@use "./colors" as *;
 
 .rightAlign{
     text-align: right;
@@ -11,7 +12,11 @@
     font-size: 2rem;
 }
 
-
+.separator{
+    border-bottom: 2px solid $separator;
+    margin: .3rem 0;
+    width: 100%;
+}
 .italics{
     font-style: italic;
 }

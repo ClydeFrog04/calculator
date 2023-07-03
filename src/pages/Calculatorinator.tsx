@@ -3,7 +3,8 @@ import "./Calculatorinator.css";
 import Button from "../components/Button/Button.tsx";
 import {evaluateEquation, getRPN} from "../utils/ShuntingYard/ShuntingYard";
 import {Tokenizer} from "../utils/ShuntingYard/Tokenizer";
-import beeIcon from "../res/TransbeeIconMedium.png"
+import beeIcon from "../res/TransbeeIconMedium.png";
+import {useNavigate} from "react-router-dom";
 
 interface CalculatorinatorProps {
 
@@ -13,13 +14,27 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     const TAG = "[Calculatorinator.tsx]";
     const [answer, setAnswer] = useState<string>("");
     const [shouldClearText, setShouldClearText] = useState(false);//this will be used to determine if we might want to clear text when a new digit is pressed, this follows modern calculator flow :p
-    // const style = {"--width": fillWidth} as CSSProperties;
-    const themeStyle = {"--$themeColor": "$themeBlue", backgroundColor: "$themeColor"} as CSSProperties;
+    const [themeOption, setThemeOption] = useState(0);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [showCustomColorInput, setShowCustomColorInput] = useState(false);
+    const [customColor, setCustomColor] = useState("#fff");
+
+    const navigate = useNavigate();
+    const themeCustom = {"--userColor": customColor} as CSSProperties;
+    const colorOptions = [
+        "Green",
+        "Purple",
+        "Blue",
+        "Red",
+        "Pink",
+        "Orange",
+        "Custom"
+    ];
 
 
 
     const isLastCharOperator = () => {
-        if(answer === undefined) return false;
+        if (answer === undefined) return false;
         console.log(TAG, typeof answer);
         const lastChar = answer.charAt(answer.length - 1);
         return (lastChar === "+" ||
@@ -81,14 +96,14 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
                 if (!isLastCharOperator()) {//minus handled differently than other operators to allow negative input
                     setAnswer(answer + btnText);
                 }
-                if(shouldClearText){
+                if (shouldClearText) {
                     setShouldClearText(false);
                 }
                 break;
             case "+":
             case "*":
             case "/":
-                if(shouldClearText){
+                if (shouldClearText) {
                     setShouldClearText(false);
                 }
                 if (!isLastCharOperator() && answer.length !== 0) {
@@ -96,58 +111,81 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
                 }
                 break;
             default://default will be all the digits, just add them to the answer
-                if(shouldClearText){
+                if (shouldClearText) {
                     setShouldClearText(false);
                     setAnswer(btnText);
-                }else{
+                } else {
                     setAnswer(answer + btnText);
                 }
         }
     };
 
 
-    const themeCustom = {"--userColor": "#fff"} as CSSProperties;
-    const colorOptions = [
-        "Green",
-        "Purple",
-        "Blue",
-        "Red",
-        "Pink",
-        "Orange",
-    ];
-    const [themeOption, setThemeOption] = useState(0);
-    const [menuOpen, setMenuOpen] = useState(false);
-
-
-    const getThemeName = ():string => {
+    const getThemeName = (): string => {
         // arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
         const colorPicked = colorOptions[themeOption];
-        return `theme${colorPicked.charAt(0).toUpperCase() + colorPicked.slice(1)}`
-    }
+        return `theme${colorPicked.charAt(0).toUpperCase() + colorPicked.slice(1)}`;
+    };
 
     const handleDropDownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         console.log(TAG, "New color picked was:", e.target.value);
         setThemeOption(colorOptions.indexOf(e.target.value));
-        setMenuOpen(false);
+
+        if(e.target.value !== "Custom"){
+            setMenuOpen(false);
+            setShowCustomColorInput(false);
+        }else{
+            setShowCustomColorInput(true);
+        }
+    };
+
+    const validateHexCode =  (test: string) => {
+        // const pattern = /#[0-9a-f]{6}|#[0-9a-f]{3}/gi;
+        const pattern = /^#(?:[0-9a-f]{3}){1,2}$/i;
+        return test.match(pattern) !== null;
     }
 
     return (
         <div className={`calculatorinator ${getThemeName()}`.trimEnd()} style={themeCustom}>
             <div className={`menuContainer`}>
-                <img src={beeIcon} alt="" onClick={ () => {
+                <img src={beeIcon} alt="" onClick={() => {
                     setMenuOpen(!menuOpen);
                 }}/>
-                <div className={`menu ${menuOpen ? "" : "hide"}`.trimEnd()} onClick={ () => {
+                <div className={`menu ${menuOpen ? "" : "hide"}`.trimEnd()} onClick={() => {
                     setMenuOpen(false);
                 }}>
                     <span>Don't like the current color? Try one of these!</span>
                     <select className="colorOptions"
                             onChange={handleDropDownChange}
                             onClick={event => event.stopPropagation()}>
-                        {colorOptions.map( (color) => {
-                            return <option key={color}>{color}</option>
+                        {colorOptions.map((color) => {
+                            return <option key={color}>{color}</option>;
                         })}
                     </select>
+                    {showCustomColorInput && <input
+                        className={"customColorInput"}
+                        onClick={event => event.stopPropagation()}
+                        onChange={ (e) => {
+                            const matches = validateHexCode(e.target.value);
+                            console.log(TAG, e.target.value, "matches:", matches);
+                            if(matches){
+                                setCustomColor(e.target.value);
+                            }
+
+                        }}
+                    />}
+
+                    <div className="separator"/>
+                    <div className="bored">
+                        <span>Bored?</span>
+                        <Button class={"boredBtn"} text={"Take me home!"} onClick={() => {
+                            try {
+                                //this app can be wrapped in another app that has a router, but in case one isn't found, we dont want to crash!
+                                navigate("/");
+                            } catch (e) {
+                            }
+                        }}/>
+                    </div>
                 </div>
             </div>
             {/*<textarea className="answerArea" readOnly={true} value={"EEEEEEEE"}/>*/}
