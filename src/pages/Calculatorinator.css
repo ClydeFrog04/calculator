@@ -280,6 +280,7 @@
 }
 .calculatorinator.themeCustom .button {
   background-color: var(--userColor, #b04c4f);
+  color: var(--fontColor, white);
 }
 .calculatorinator.themeCustom .answerArea {
   border-color: var(--userColor, #b04c4f);
