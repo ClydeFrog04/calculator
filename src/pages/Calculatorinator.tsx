@@ -4,7 +4,7 @@ import Button from "../components/Button/Button.tsx";
 import {evaluateEquation, getRPN} from "../utils/ShuntingYard/ShuntingYard";
 import {Tokenizer} from "../utils/ShuntingYard/Tokenizer";
 import beeIcon from "../res/TransbeeIconMedium.png";
-import {useNavigate} from "react-router-dom";
+// import {useNavigate} from "react-router-dom";
 
 interface CalculatorinatorProps {
 
@@ -29,7 +29,7 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     //     alert(e.name + " " + e.message);
     //     console.log(e.stack);
     // }
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const themeCustom = {"--userColor": customColor, "--fontColor": fontColor} as CSSProperties;
     const colorOptions = [
@@ -255,7 +255,7 @@ L = 0.2126 * r + 0.7152 * g + 0.0722 * b
                         <Button class={"boredBtn"} text={"Take me home!"} onClick={() => {
                             try {
                                 //this app can be wrapped in another app that has a router, but in case one isn't found, we dont want to crash!
-                                navigate("/");
+                                // navigate("/");
                             } catch (e) {
                             }
                         }}/>
