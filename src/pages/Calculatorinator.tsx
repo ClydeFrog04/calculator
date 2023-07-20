@@ -21,7 +21,13 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     const [fontColor, setFontColor] = useState("#fff");
 
 
-    const navigate = useNavigate();
+    let navigate: ReturnType<typeof useNavigate>;
+    try {
+        navigate = useNavigate();
+    }catch (e){
+        console.error("usenavigate error occurred:", e);
+    }
+
     const themeCustom = {"--userColor": customColor, "--fontColor": fontColor} as CSSProperties;
     const colorOptions = [
         "Green",
