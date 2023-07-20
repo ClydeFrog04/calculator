@@ -7,7 +7,7 @@ import beeIcon from "../res/TransbeeIconMedium.png";
 // import {useNavigate} from "react-router-dom";
 
 interface CalculatorinatorProps {
-
+    navigate?: any;
 }
 
 const Calculatorinator = (props: CalculatorinatorProps) => {
@@ -256,6 +256,9 @@ L = 0.2126 * r + 0.7152 * g + 0.0722 * b
                             try {
                                 //this app can be wrapped in another app that has a router, but in case one isn't found, we dont want to crash!
                                 // navigate("/");
+                                if(props.navigate) {
+                                    props.navigate("/");
+                                }
                             } catch (e) {
                             }
                         }}/>
