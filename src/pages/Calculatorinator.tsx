@@ -21,13 +21,14 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     const [fontColor, setFontColor] = useState("#fff");
 
 
-    let navigate: ReturnType<typeof useNavigate>;
-    try {
-        navigate = useNavigate();
-    }catch (e: any){
-        console.error("usenavigate error occurred:", e);
-        alert(e.name + " " + e.message);
-    }
+    // let navigate: ReturnType<typeof useNavigate>;
+    // try {
+    //     navigate = useNavigate();
+    // }catch (e: any){
+    //     console.error("usenavigate error occurred:", e);
+    //     alert(e.name + " " + e.message);
+    // }
+    const navigate = useNavigate();
 
     const themeCustom = {"--userColor": customColor, "--fontColor": fontColor} as CSSProperties;
     const colorOptions = [

@@ -1,7 +1,7 @@
 /**
  * @author Randi Egan
  */
-import React from "react";
+import React, {StrictMode} from "react";
 import * as ReactDOMClient from "react-dom/client";
 import App from "./App.tsx";
 import "./index.scss";
@@ -12,9 +12,11 @@ const container = document.getElementById("root") as HTMLElement;
 const root = ReactDOMClient.createRoot(container);
 
 root.render(
+    <StrictMode>
     <Router>
         <RootProvider>
             <App/>
         </RootProvider>
     </Router>
+    </StrictMode>
 );
