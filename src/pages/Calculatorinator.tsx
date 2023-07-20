@@ -26,7 +26,7 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
         navigate = useNavigate();
     }catch (e: any){
         console.error("usenavigate error occurred:", e);
-        alert(e.stack);
+        alert(e.name, e.message);
     }
 
     const themeCustom = {"--userColor": customColor, "--fontColor": fontColor} as CSSProperties;
