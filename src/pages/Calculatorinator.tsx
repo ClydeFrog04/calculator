@@ -4,7 +4,6 @@ import Button from "../components/Button/Button.tsx";
 import {evaluateEquation, getRPN} from "../utils/ShuntingYard/ShuntingYard";
 import {Tokenizer} from "../utils/ShuntingYard/Tokenizer";
 import beeIcon from "../res/TransbeeIconMedium.png";
-// import {useNavigate} from "react-router-dom";
 
 interface CalculatorinatorProps {
     navigate?: any;
@@ -17,19 +16,9 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     const [themeOption, setThemeOption] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
     const [showCustomColorInput, setShowCustomColorInput] = useState(false);
-    const [customColor, setCustomColor] = useState("#fff");
-    const [fontColor, setFontColor] = useState("#fff");
+    const [customColor, setCustomColor] = useState("#ffffff");
+    const [fontColor, setFontColor] = useState("#000");
 
-
-    // let navigate: ReturnType<typeof useNavigate>;
-    // try {
-    //     navigate = useNavigate();
-    // }catch (e: any){
-    //     console.error("usenavigate error occurred:", e);
-    //     alert(e.name + " " + e.message);
-    //     console.log(e.stack);
-    // }
-    // const navigate = useNavigate();
 
     const themeCustom = {"--userColor": customColor, "--fontColor": fontColor} as CSSProperties;
     const colorOptions = [
@@ -41,7 +30,6 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
         "Orange",
         "Custom"
     ];
-
 
 
     const isLastCharOperator = () => {
@@ -142,22 +130,22 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
         console.log(TAG, "New color picked was:", e.target.value);
         setThemeOption(colorOptions.indexOf(e.target.value));
 
-        if(e.target.value !== "Custom"){
+        if (e.target.value !== "Custom") {
             setMenuOpen(false);
             setShowCustomColorInput(false);
-        }else{
+        } else {
             setShowCustomColorInput(true);
         }
     };
 
-    const validateHexCode =  (test: string) => {
+    const validateHexCode = (test: string) => {
         // const pattern = /#[0-9a-f]{6}|#[0-9a-f]{3}/gi;
-        if(!test.startsWith("#")){
+        if (!test.startsWith("#")) {
             test = "#" + test;
         }
         const pattern = /^#(?:[0-9a-f]{3}){1,2}$/i;
         return test.match(pattern) !== null;
-    }
+    };
 
     /**
      * this function will calculate the best font color for a given background color in hex
@@ -171,10 +159,10 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
     if c <= 0.04045 then c = c/12.92 else c = ((c+0.055)/1.055) ^ 2.4
 L = 0.2126 * r + 0.7152 * g + 0.0722 * b
          */
-        if (colorCode.startsWith("#")){
+        if (colorCode.startsWith("#")) {
             colorCode = colorCode.slice(1);
         }
-        if(colorCode.length === 3){//allows for color codes like #af4 to work :]
+        if (colorCode.length === 3) {//allows for color codes like #af4 to work :]
             let r = colorCode.charAt(0);
             let g = colorCode.charAt(1);
             let b = colorCode.charAt(2);
@@ -186,15 +174,15 @@ L = 0.2126 * r + 0.7152 * g + 0.0722 * b
         const b = colorCode.slice(4);
         console.log(TAG, "rbg found:", r, g, b);
 
-        const rgb = [r,g,b];
+        const rgb = [r, g, b];
         const rgbLuminance: number[] = [];
-        rgb.forEach( (c) => {
+        rgb.forEach((c) => {
             let num = parseInt(c, 16);
             num /= 255.0;
-            if(num <= 0.4045){
+            if (num <= 0.4045) {
                 num = num / 12.92;
-            }else{
-                num =  ((num+0.055)/1.055) ^ 2.4;
+            } else {
+                num = ((num + 0.055) / 1.055) ^ 2.4;
             }
             rgbLuminance.push(num);
         });
@@ -202,15 +190,15 @@ L = 0.2126 * r + 0.7152 * g + 0.0722 * b
         let L = 0.2126 * rgbLuminance[0] + 0.7152 * rgbLuminance[1] + 0.0722 * rgbLuminance[2];
 
         //if L > 0.179 use #000000 else use #ffffff
-        if(L > 0.179){
+        if (L > 0.179) {
             console.log(TAG, "use black");
             return "#000000";
-        }else{
+        } else {
             console.log(TAG, "use white");
             return "#FFFFFF";
         }
 
-    }
+    };
 
     return (
         <div className={`calculatorinator ${getThemeName()}`.trimEnd()} style={themeCustom}>
@@ -232,15 +220,16 @@ L = 0.2126 * r + 0.7152 * g + 0.0722 * b
                     {showCustomColorInput && <input
                         className={"customColorInput"}
                         onClick={event => event.stopPropagation()}
-                        onChange={ (e) => {
+                        placeholder={"enter hex code here"}
+                        onChange={(e) => {
                             const colorCode = e.target.value;
                             const matches = validateHexCode(colorCode);
                             console.log(TAG, colorCode, "matches:", matches);
-                            if(matches){
+                            if (matches) {
                                 const preferredFontColor = calculateContrastColor(colorCode);
-                                if(!colorCode.startsWith("#")){
+                                if (!colorCode.startsWith("#")) {
                                     setCustomColor("#" + colorCode);
-                                }else{
+                                } else {
                                     setCustomColor(colorCode);
                                 }
                                 setFontColor(preferredFontColor);
@@ -253,13 +242,8 @@ L = 0.2126 * r + 0.7152 * g + 0.0722 * b
                     <div className="bored">
                         <span>Bored?</span>
                         <Button class={"boredBtn"} text={"Take me home!"} onClick={() => {
-                            try {
-                                //this app can be wrapped in another app that has a router, but in case one isn't found, we dont want to crash!
-                                // navigate("/");
-                                if(props.navigate) {
-                                    props.navigate("/");
-                                }
-                            } catch (e) {
+                            if (props.navigate) {
+                                props.navigate("/");
                             }
                         }}/>
                     </div>
