@@ -1,7 +1,7 @@
 import React, {CSSProperties, useState} from "react";
 import "./Calculatorinator.css";
 import Button from "../components/Button/Button.tsx";
-import {evaluateEquation, getRPN} from "../utils/ShuntingYard/ShuntingYard";
+import {evaluateEquation} from "../utils/ShuntingYard/ShuntingYard";
 import {Tokenizer} from "../utils/ShuntingYard/Tokenizer";
 import beeIcon from "../res/TransbeeIconMedium.png";
 
@@ -41,6 +41,12 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
             lastChar === "*" ||
             lastChar === "/");
     };
+
+    const isLastCharSubtract =  () => {
+        if (answer === undefined) return false;
+        const lastChar = answer.charAt(answer.length - 1);
+        return lastChar === "-";
+    }
 
     const canAddDot = () => {
         if (!answer.includes(".")) return true;
@@ -92,10 +98,10 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
                 }
                 break;
             case "-":
-                if (!isLastCharOperator()) {//minus handled differently than other operators to allow negative input
+                if(!isLastCharSubtract()){
                     setAnswer(answer + btnText);
                 }
-                if (shouldClearText) {
+                if (shouldClearText) {//reset so we don't clear text when entering an operator
                     setShouldClearText(false);
                 }
                 break;
@@ -250,7 +256,7 @@ L = 0.2126 * r + 0.7152 * g + 0.0722 * b
                 </div>
             </div>
             {/*<textarea className="answerArea" readOnly={true} value={"EEEEEEEE"}/>*/}
-            <div id={"answerArea"} className="answerArea">{answer}</div>
+            <div data-testid="answerArea" id={"answerArea"} className="answerArea">{answer}</div>
             <Button id={"clear"} onClick={digitBtnHandler} text={"clear"}/>
             <Button id={"back"} onClick={digitBtnHandler} text={"back"}/>
             <Button id={"seven"} class={"digit"} onClick={digitBtnHandler} text={"7"}/>

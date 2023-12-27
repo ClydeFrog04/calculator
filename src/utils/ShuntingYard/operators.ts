@@ -1,4 +1,8 @@
 export const operators = {
+    "u":{
+        precedence: 4,
+        association: "right"
+    },
     "^":{
         precedence: 4,
         association: "right"
@@ -19,5 +23,4 @@ export const operators = {
         precedence: 2,
         association: "left"
     },
-
 }

@@ -24,7 +24,7 @@ const Button = (props: PropsWithChildren<ButtonProps>) => {
     }
 
     return (
-        <button id={props.id ? props.id : undefined} className={`button ${props.class ? props.class : ""}`.trim()} value={props.text} onClick={handleClick}>
+        <button data-testid={`${props.id}Button`} id={props.id ? props.id : undefined} className={`button ${props.class ? props.class : ""}`.trim()} value={props.text} onClick={handleClick}>
             {props.text}
         </button>
     );

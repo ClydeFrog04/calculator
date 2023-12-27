@@ -2,6 +2,9 @@
   background-color: #4cb050;
   border: none;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .button:hover {
   cursor: pointer;
