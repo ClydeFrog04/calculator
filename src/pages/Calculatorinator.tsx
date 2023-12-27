@@ -42,6 +42,12 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
             lastChar === "/");
     };
 
+    const isLastCharSubtract =  () => {
+        if (answer === undefined) return false;
+        const lastChar = answer.charAt(answer.length - 1);
+        return lastChar === "-";
+    }
+
     const canAddDot = () => {
         if (!answer.includes(".")) return true;
         const lastPlus = answer.lastIndexOf("+");
@@ -92,10 +98,10 @@ const Calculatorinator = (props: CalculatorinatorProps) => {
                 }
                 break;
             case "-":
-                if (!isLastCharOperator()) {//minus handled differently than other operators to allow negative input
+                if(!isLastCharSubtract()){
                     setAnswer(answer + btnText);
                 }
-                if (shouldClearText) {
+                if (shouldClearText) {//reset so we don't clear text when entering an operator
                     setShouldClearText(false);
                 }
                 break;

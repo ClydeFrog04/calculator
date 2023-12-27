@@ -173,6 +173,17 @@ describe("Render Calculatorinator Page",  () => {
         expect(answerArea.textContent).toBe("-2-3");
         fireEvent.click(solveButton);
         expect(answerArea.textContent).toBe("-5");
+
+        //test negative number after operator input e.g. 2+-4
+        fireEvent.click(clearButton);
+        fireEvent.click(twoButton);
+        fireEvent.click(addButton);
+        fireEvent.click(subtractButton);
+        fireEvent.click(fourButton);
+
+        expect(answerArea.textContent).toBe("2+-4");
+        fireEvent.click(solveButton);
+        expect(answerArea.textContent).toBe("-2");
     });
 });
 
