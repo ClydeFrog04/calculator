@@ -184,6 +184,15 @@ describe("Render Calculatorinator Page",  () => {
         expect(answerArea.textContent).toBe("2+-4");
         fireEvent.click(solveButton);
         expect(answerArea.textContent).toBe("-2");
+
+        fireEvent.click(clearButton);
+        fireEvent.click(eightButton);
+        fireEvent.click(divideButton);
+        fireEvent.click(subtractButton);
+        fireEvent.click(fourButton);
+        expect(answerArea.textContent).toBe("8/-4");
+        fireEvent.click(solveButton);
+        expect(answerArea.textContent).toBe("-2");
     });
 });
 
