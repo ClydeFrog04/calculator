@@ -2,9 +2,13 @@
 
 .button {
     background-color: $themeGreen;
+    //background-color: red;
     border: none;
     //padding: 0.9rem 1rem;//i think this was needed for when buttons were gonna be square and standalone, not as part of a grid display.
     border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &:hover {
         cursor: pointer;
     }
